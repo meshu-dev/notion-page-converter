@@ -106,3 +106,7 @@ compatibility_flags = ["nodejs_compat"]
 # [[vectorize]]
 # binding = "MY_INDEX"
 # index_name = "my-index"
+
+# [[vars]]
+# AUTH_TOKEN=
+# NOTION_API_TOKEN=
