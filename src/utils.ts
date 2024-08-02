@@ -40,5 +40,3 @@ export const htmlResponse = (html: string, status: number = 200) => {
     }
   )
 }
-
-
