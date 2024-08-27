@@ -6,3 +6,10 @@ export type Env = {
 export type RequestParams = {
   pageId: string
 }
+
+export type MarkdownBlock = {
+  type: string
+  blockId: string
+  parent: string
+  children: any[]
+}
