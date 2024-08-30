@@ -1,17 +1,12 @@
 import { MarkdownBlock } from "./types"
 
 const generateHeadingId = (heading: string): string => {
-  heading = heading
+  return heading
+    .replace(/#/g, '')
+    .replace(/ /g, '-')
+    .replace(/[^a-z0-9-]/gi, '')
     .trim()
     .toLowerCase()
-    .replace(/ /g, '-')
-
-  const matches = heading.match(/([0-9a-zA-Z-])/g)
-
-  if (matches && matches.length !== 0) {
-    return matches.join('')
-  }
-  return heading
 }
 
 const addHeadingIds = (markdownBlocks: MarkdownBlock[]): MarkdownBlock[] => {
