@@ -2,9 +2,9 @@ import { MarkdownBlock } from "./types"
 
 const generateHeadingId = (heading: string): string => {
   return heading
-    .trim()
     .toLowerCase()
     .replace(/#/g, '')
+    .trim()
     .replace(/ /g, '-')
     .replace(/[^a-z0-9-]/gi, '')
 }
@@ -19,6 +19,9 @@ const addHeadingIds = (markdownBlocks: MarkdownBlock[]): MarkdownBlock[] => {
       headingBlocks.push(markdown)
 
       const heading: string = generateHeadingId(markdown.parent)
+
+      console.log('HEAD', heading, markdown.parent);
+
       markdownBlocks[i].parent += ` {#${heading}}`
     }
   }
