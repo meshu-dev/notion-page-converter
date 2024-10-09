@@ -7,8 +7,7 @@ import hljs from 'highlight.js'
 import customHeadingId from "marked-custom-heading-id"
 import { MarkdownBlock } from './types'
 import { addTableOfContents, hasTableOfContents } from './toc'
-
-
+import { addUnsupportedBlocks } from './notion-blocks'
 
 export const notionPageToHtml = async (notionApiToken: string, pageId: string): Promise<string | null> => {
   // Setup Notion client and Notion to Markdown converter
@@ -17,10 +16,7 @@ export const notionPageToHtml = async (notionApiToken: string, pageId: string): 
 
   // Convert page blocks to Markdown
   let markdownBlocks: MarkdownBlock[] = await notionToMarkdown.pageToMarkdown(pageId) as MarkdownBlock[]
-
-  if (hasTableOfContents(markdownBlocks)) {
-    markdownBlocks = addTableOfContents(markdownBlocks)
-  }
+  markdownBlocks = addUnsupportedBlocks(markdownBlocks)
 
   const markdown: MdStringObject = await notionToMarkdown.toMarkdownString(markdownBlocks)
 
